@@ -1,4 +1,5 @@
 using System;
+using ExamPlatformBE.Data;
 using ExamPlatformBE.Entities;
 
 namespace ExamPlatformBE.Endpoints;
@@ -11,8 +12,8 @@ public static class UsersEndpoints
 
         var group = app.MapGroup("users").WithParameterValidation();
 
-        group.MapGet("/", () => "Get all users");
-        group.MapGet("/{id}", (int id) => $"Get user with ID {id}");
+        group.MapGet("/", (ExamPlatformContext dbContext) => "Get all users");
+        group.MapGet("/{id}", async (int id, ExamPlatformContext dbContext ) => $"Get user with ID {id}");
         group.MapPost("/", (User user) => "Create a new user");
 
         return group;
