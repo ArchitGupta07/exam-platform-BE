@@ -1,3 +1,18 @@
+## How to run the Project
+
+```
+
+dotnet clean
+dotnet build
+```
+
+## How to run the Project
+
+```
+dotnet run --watch
+
+```
+
 ## Entity Framework Core Installation
 
 ```
@@ -26,6 +41,7 @@ dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 9.0.0
 ## Swagger Installation Guide
 
 ```
+dotnet add package Swashbuckle.AspNetCore --version 6.9.0
 dotnet add package Swashbuckle.AspNetCore.Swagger --version 6.9.0
 dotnet add package Swashbuckle.AspNetCore.SwaggerGen --version 6.9.0
 dotnet add package Swashbuckle.AspNetCore.SwaggerUI --version 6.9.0

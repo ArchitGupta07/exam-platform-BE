@@ -19,37 +19,35 @@ if (string.IsNullOrEmpty(connString))
 // Add the PostgreSQL service with connection string
 builder.Services.AddNpgsql<ExamPlatformContext>(connString);
 
+
+builder.Services.AddMvcCore();
+builder.Services.AddEndpointsApiExplorer();
 // Add Swagger services
 builder.Services.AddSwaggerGen(options =>
 {
-    // You can set the basic API info in Swagger documentation
     options.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "Exam Platform API",
+        Title = "My API",
         Version = "v1",
-        Description = "API for managing exams, users, and more.",
-        Contact = new OpenApiContact
-        {
-            Name = "Your Name",
-            Email = "your.email@example.com",
-        }
+        Description = "API documentation"
     });
 });
 
 var app = builder.Build();
 
-// Enable Swagger and Swagger UI
-app.UseSwagger(); // This enables the Swagger JSON endpoint
+
+app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Exam Platform API V1"); // Swagger JSON file
-    c.RoutePrefix = string.Empty; // Make Swagger UI accessible at the root
-});
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Exam Platform API v1");
+    c.RoutePrefix = string.Empty;  // Makes Swagger UI available at the root of the app
+});  // Configure Swagger UI
+
 
 // Map your endpoints
 app.MapUsersEndpoint();
 
-app.MapGet("/", () => "Hello World!");
+// app.MapGet("/", () => "Hello World One!");
 
 // Apply migrations on startup
 await app.MigrateDbAsync();

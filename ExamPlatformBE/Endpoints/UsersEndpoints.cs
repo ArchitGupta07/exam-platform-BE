@@ -13,7 +13,7 @@ public static class UsersEndpoints
         var group = app.MapGroup("users").WithParameterValidation();
 
         group.MapGet("/", (ExamPlatformContext dbContext) => "Get all users");
-        group.MapGet("/{id}", async (int id, ExamPlatformContext dbContext ) => $"Get user with ID {id}");
+        group.MapGet("/{id}",  (int id, ExamPlatformContext dbContext ) => $"Get user with ID {id}");
         group.MapPost("/", (User user) => "Create a new user");
 
         return group;
