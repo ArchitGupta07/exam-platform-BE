@@ -2,6 +2,15 @@ using System;
 
 namespace ExamPlatformBE.Entities;
 
+
+public enum QuestionType
+{
+    MultipleChoice,
+    TrueFalse,
+    ShortAnswer,
+    Essay,
+    FillInTheBlank
+}
 public class Question
 {
     public int Id { get; set; }
