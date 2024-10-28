@@ -9,7 +9,7 @@ dotnet build
 ## How to run the Project
 
 ```
-dotnet run --watch
+dotnet watch run
 
 ```
 
