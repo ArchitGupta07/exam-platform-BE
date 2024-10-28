@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ExamPlatformBE")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0471e9d0b790a44a2e1f7660558d6f114b7cbd91")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6b670e4126c43853808aa0a0e83e84685e9bb614")]
 [assembly: System.Reflection.AssemblyProductAttribute("ExamPlatformBE")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ExamPlatformBE")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

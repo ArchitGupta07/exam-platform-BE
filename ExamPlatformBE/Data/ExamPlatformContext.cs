@@ -9,5 +9,7 @@ public class ExamPlatformContext(DbContextOptions<ExamPlatformContext> options) 
 
     public DbSet<User> Users => Set<User>();
     public DbSet<Exam> Exams => Set<Exam>();
+    public DbSet<Question> Questions => Set<Question>();
+    public DbSet<Answer> Answers => Set<Answer>();
 
 }
