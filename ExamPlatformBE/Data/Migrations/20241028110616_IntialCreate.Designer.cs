@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ExamPlatformBE.Data.Migrations
 {
     [DbContext(typeof(ExamPlatformContext))]
-    [Migration("20241028105855_AlterQuestionTable")]
-    partial class AlterQuestionTable
+    [Migration("20241028110616_IntialCreate")]
+    partial class IntialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -91,8 +91,9 @@ namespace ExamPlatformBE.Data.Migrations
                     b.Property<int>("ExamId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("QuestionType")
-                        .HasColumnType("integer");
+                    b.Property<string>("QuestionType")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 

@@ -41,8 +41,6 @@ namespace ExamPlatformBE.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("QuestionId");
-
                     b.ToTable("Answers");
                 });
 
@@ -124,17 +122,6 @@ namespace ExamPlatformBE.Data.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("ExamPlatformBE.Entities.Answer", b =>
-                {
-                    b.HasOne("ExamPlatformBE.Entities.Question", "Question")
-                        .WithMany("Answer")
-                        .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Question");
-                });
-
             modelBuilder.Entity("ExamPlatformBE.Entities.Question", b =>
                 {
                     b.HasOne("ExamPlatformBE.Entities.Exam", "Exam")
@@ -144,11 +131,6 @@ namespace ExamPlatformBE.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Exam");
-                });
-
-            modelBuilder.Entity("ExamPlatformBE.Entities.Question", b =>
-                {
-                    b.Navigation("Answer");
                 });
 #pragma warning restore 612, 618
         }

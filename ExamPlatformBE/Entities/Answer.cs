@@ -12,6 +12,6 @@ public class Answer
 
     public bool IsCorrect { get; set; }
 
-    public required Question Question { get; set; }
+    // public required Question Question { get; set; }
 
 }

@@ -47,6 +47,7 @@ app.UseSwaggerUI(c =>
 // Map your endpoints
 app.MapUsersEndpoint();
 app.MapExamsEndpoint();
+app.MapQuestionsEndpoint();
 
 // app.MapGet("/", () => "Hello World One!");
 

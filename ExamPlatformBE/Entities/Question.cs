@@ -6,11 +6,16 @@ namespace ExamPlatformBE.Entities;
 public enum QuestionType
 {
     MultipleChoice,
+
     TrueFalse,
-    ShortAnswer,
+
+    Integer,
+
     Essay,
+
     FillInTheBlank
 }
+
 public class Question
 {
     public int Id { get; set; }
@@ -20,8 +25,6 @@ public class Question
     public required string Content { get; set; } 
 
     public required string QuestionType { get; set; }  // E.g., Multiple Choice, True/False, etc
-
-    public  required ICollection<Answer> Answer { get; set; }
 
     public required Exam Exam { get; set; }
 

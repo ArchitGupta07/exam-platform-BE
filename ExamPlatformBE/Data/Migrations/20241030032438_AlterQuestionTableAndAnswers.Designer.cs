@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ExamPlatformBE.Data.Migrations
 {
     [DbContext(typeof(ExamPlatformContext))]
-    [Migration("20241028101822_AddQuestionAnsTable")]
-    partial class AddQuestionAnsTable
+    [Migration("20241030032438_AlterQuestionTableAndAnswers")]
+    partial class AlterQuestionTableAndAnswers
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,6 +23,29 @@ namespace ExamPlatformBE.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("ExamPlatformBE.Entities.Answer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsCorrect")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Answers");
+                });
 
             modelBuilder.Entity("ExamPlatformBE.Entities.Exam", b =>
                 {
@@ -51,6 +74,32 @@ namespace ExamPlatformBE.Data.Migrations
                     b.ToTable("Exams");
                 });
 
+            modelBuilder.Entity("ExamPlatformBE.Entities.Question", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("ExamId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("QuestionType")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExamId");
+
+                    b.ToTable("Questions");
+                });
+
             modelBuilder.Entity("ExamPlatformBE.Entities.User", b =>
                 {
                     b.Property<int>("Id")
@@ -74,6 +123,17 @@ namespace ExamPlatformBE.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("ExamPlatformBE.Entities.Question", b =>
+                {
+                    b.HasOne("ExamPlatformBE.Entities.Exam", "Exam")
+                        .WithMany()
+                        .HasForeignKey("ExamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Exam");
                 });
 #pragma warning restore 612, 618
         }
